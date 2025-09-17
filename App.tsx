@@ -1,10 +1,18 @@
+import React, { useState } from "react"
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import logoverde from "./logo-verde.png"
+import logopreto from "./logo-preto.png"
 
 export default function App() {
+  const [visible, setVisible] = useState(true);
+  const handleLogoView = () => {
+    setVisible(prev => !prev);
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <View style={styles.container} onTouchStart={handleLogoView}>
+      {visible ? (<Image source={logoverde} style={styles.logoverde}  />) : (<Image source={logopreto} style={styles.logopreto} />)}
+      <Text>Teste!</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -17,4 +25,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoverde: {
+  },
+  logopreto: {
+  }
 });
+
